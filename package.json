@@ -2,6 +2,9 @@
     "name": "shiny-board",
     "version": "1.0.0",
     "description": "Simple menu system for popular links",
+    "engines": {
+        "node": "5.9.1"
+    },
     "main": "index.js",
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1",
@@ -14,5 +17,10 @@
         "express": "4.x",
         "mongodb": "2.x",
         "morgan": "1.x"
-    }
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/shinybob/shiny-board"
+    },
+    "license": "MIT"
 }
