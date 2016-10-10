@@ -1,0 +1,204 @@
+<!--<div class="container">-->
+
+<!--&lt;!&ndash;<div ng-show="show_add">&ndash;&gt;-->
+<!--<div class="add-menu">-->
+
+<!--</div>-->
+<!--&lt;!&ndash;</div>&ndash;&gt;-->
+
+<!--</div>-->
+
+<!--<div class="quick-menu dontainer">-->
+<!--</div>-->
+
+<div class="container">
+
+    <!--<div class="row">-->
+    <!--<div class="alert alert-danger" ng-show="page_load_error"> {{ page_load_error }}</div>-->
+    <!--<div ng-show="!finished_loading"><h4 style="color: #aaaaaa"> Loading ... please wait a moment </h4></div>-->
+    <!--</div>-->
+
+    <div ng-show="finished_loading">
+
+        <div class="row" >
+            <div class="col-xs-12 col-sm-12 col-md-12">
+                <div class="panel">
+                    <div class="panel-heading"><div class="row">
+                        <div class="col-xs-8">
+                        <!--<div class="row">-->
+                        <!--<div class="col-xs-12 col-sm-3 col-md-4">-->
+                        <input class="form-control input-sm" placeholder="Search..." ng-model="searchFor"/>
+                        </div>
+                        <div class="col-xs-4">
+                        <!--<div class="col-xs-12 col-sm-9 col-md-8">-->
+                        <!--<button data-toggle="collapse" data-target="#demo" class="add-button"><span-->
+                        <!--class="glyphicon glyphicon-plus"></span></button>-->
+                        <button ng-hide="adding_cell" ng-click="show_add_cell()" type="button" class="btn add-button">
+                            <span class="glyphicon glyphicon-plus"></span></button>
+                        </div>
+                        <!--</div>-->
+                        <!--<div class="col-md-6 col-sm-8 ">-->
+                        <!--<div class="alert alert-danger" ng-show="add_cell_error" role="alert">{{ add_cell_error }}</div>-->
+                        <!--&lt;!&ndash;&ndash;&gt;-->
+                        <!--&lt;!&ndash;</div>&ndash;&gt;-->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <!--<div class="row">-->
+        <!--<div class="col-sm-12">-->
+        <!--<div class="alert alert-danger" ng-show="delete_cell_error" role="alert">{{delete_cell_error}}</div>-->
+        <!--</div>-->
+        <!--</div>-->
+
+
+        <div ng-show="adding_cell">
+            <div class="panel panel-heading" style="background-color: #646464">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div class="alert alert-danger" ng-show="add_cell_error" role="alert">{{add_cell_error}}</div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-4">
+                        <input class="form-control input-sm" type="text" placeholder="Name" ng-model="new_cell_data.name"/>
+                    </div>
+                    <div class="col-xs-4">
+                        <input class="form-control input-sm" type="text" placeholder="URL" ng-model="new_cell_data.url"/>
+                    </div>
+
+                    <div class="col-xs-4">
+                        <button ng-click="add_cell(new_cell_data)" type="button" class="btn btn-success">
+                            <span class="glyphicon glyphicon-ok"></span>
+                        </button>
+
+                        <button ng-click="hide_add_cell()" type="button" class="btn close-button">
+                            <span class="glyphicon glyphicon-remove"></span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div ng-show="updateing_cell">
+            <div class="panel panel-heading" style="background-color: #646464">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div class="alert alert-danger" ng-show="update_cell_error" role="alert">{{update_cell_error}}</div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-6 col-sm-4">
+                        <input class="form-control input-sm" type="text" placeholder="Name" ng-model="update_cell_data.name"/>
+                    </div>
+                    <div class="col-xs-6 col-sm-4">
+                        <input class="form-control input-sm" type="text" placeholder="URL" ng-model="update_cell_data.url"/>
+                    </div>
+
+                    <div class="clearfix visible-xs">--</div>
+
+                    <div class="col-xs-12 col-sm-4">
+                        <div style="float: left">
+                            <span ng-show="update_cell_data.fav" ng-click="set_favourite(update_cell_data, false)" class="glyphicon glyphicon-star fav-button"></span>
+                            <span ng-hide="update_cell_data.fav" ng-click="set_favourite(update_cell_data, true)" class="glyphicon glyphicon-star-empty fav-button"></span>
+                        </div>
+
+                        <button ng-click="update_cell(update_cell_data)" type="button" class="btn btn-success">
+                            <span class="glyphicon glyphicon-ok"></span>
+                        </button>
+
+                        <button ng-click="delete_cell(update_cell_data)" type="button" class="btn btn-danger">
+                            <span class="glyphicon glyphicon-trash"></span>
+                        </button>
+
+                        <button ng-click="hide_update_cell()" type="button" class="btn close-button">
+                            <span class="glyphicon glyphicon-remove"></span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    <!--<button ng-click="close_cell_input()" type="button" class="btn"><span-->
+    <!--class="glyphicon glyphicon-"></span></button>-->
+
+    <!--<button ng-click="update_cell(cell_data)" type="button" class="btn btn-success"><span-->
+    <!--class="glyphicon glyphicon-ok"></span></button>-->
+
+    <!--<button ng-click="delete_cell(cell_data)" type="button" class="btn btn-danger"><span-->
+    <!--class="glyphicon glyphicon-trash"></span></button>-->
+
+    <!--<button ng-click="delete_cell(cell_data)" type="button" class="btn" style="background-color: {{cell_data.col}}"><span-->
+    <!--class="glyphicon glyphicon-pencil"></span></button>-->
+
+    <!--<div>-->
+    <!--<h5>-->
+    <!--<small>id: {{cell_data.cell_id}}</small>-->
+    <!--<small> - fav: {{cell_data.fav}}</small>-->
+    <!--<small> - col: {{cell_data.col}}</small>-->
+    <!--</h5>-->
+    <!--</div>-->
+
+    <!--<div class="col-xs-12 col-sm-12 col-md-12">-->
+    <!--<div class="panel">-->
+    <!--<div class="panel-heading">-->
+    <!--<input type="text" placeholder="Name" size="20" ng-model="new_cell.name"/>-->
+    <!--<input type="text" placeholder="URL" size="20" ng-model="new_cell.url"/>-->
+    <!--<button ng-click="add_cell(new_cell)" type="button" class="add-button"><span-->
+    <!--class="glyphicon glyphicon-ok"></span></button>-->
+    <!--</div>-->
+    <!--</div>-->
+    <!--</div>-->
+
+
+    <!--<div id="demo" class="collapse row">-->
+    <!--<div class="col-xs-2">-->
+    <!--<input type="text" placeholder="Name" size="20" ng-model="new_cell.name"/>-->
+    <!--</div>-->
+    <!--<div class="col-xs-2">-->
+    <!--<input type="text" placeholder="URL" size="20" ng-model="new_cell.url"/>-->
+    <!--</div>-->
+    <!--</div>-->
+
+    <div class="row">
+        <div ng-repeat="cell in cells | filter:{name: searchFor} | orderBy: ['-fav', 'name']">
+            <div class="col-xs-12 col-sm-3 col-md-2">
+                <div class="cell" ng-click="launch(cell.url)">
+                    <div class="cell-body">
+
+                        <span ng-click="show_update_cell(cell)" class="glyphicon glyphicon-cog cog"></span>
+
+                        <span ng-show="{{cell.fav}}" ng-click="set_favourite(cell, false)"
+                              class="glyphicon glyphicon-star fav-on"></span>
+
+                        <!--<span ng-hide="{{cell.fav}}" ng-click="set_favourite(cell, true)" class="glyphicon glyphicon-star fav-off"></span>-->
+
+                        <!--<span class="">-->
+                        {{cell.name}}
+                        <!--</span>-->
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12">
+            <div class="panel panel-primary">
+                <div class="panel-footer">
+                    shiny-board v1.0.0
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</div>
+</div>

@@ -1,0 +1,107 @@
+[ng-click],
+[data-ng-click],
+[x-ng-click] {
+    cursor: pointer;
+}
+
+body {
+    padding: 0px;
+}
+
+.close-button {
+    float: right;
+}
+
+.add-button {
+    float: right;
+}
+
+.fav-button {
+    font-size: 26px;
+    color: #ff9e00;
+    font-weight: 500;
+    padding-right: 5px;
+}
+
+.fav-on {
+    color: #ff9e00;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.cell {
+    margin-bottom: 5px;
+}
+
+.cell-body {
+    background-color: #f5f5f5;
+    border-radius: 3px;
+    padding: 5px 10px;
+    color: #7d7d7d;
+    font-size: 16px;
+    font-weight: 400;
+}
+
+.cell-body:hover {
+    background-color: #8effb0;
+    border-radius: 4px;
+    padding: 5px 10px;
+    color: #7d7d7d;
+}
+
+.cog {
+    margin-bottom: -20px;
+    float: right;
+    color: #FFFFFF;
+    font-size: 24px;
+    font-weight: 500;
+}
+
+.cog:hover {
+    color: #000000;
+}
+
+
+.add_menu {
+    /*width: 200px;*/
+    /*height: inherit;*/
+    /*background-color: #68b1c5;*/
+    /*border-radius: 4px;*/
+    /*padding: 10px 10px;*/
+
+    height: 100px;
+    background-color: #d00;
+    position: absolute;
+    top: 100px;
+    right: 0;
+    left: 0;
+}
+
+.add_cell {
+    /*margin-bottom: -20px;*/
+    float: right;
+    /*color: #dddddd;*/
+    /*font-size: 14px;*/
+    /*font-weight: 500;*/
+}
+
+/*.smaller {*/
+    /*font-size: 15pt;*/
+/*}*/
+
+/*.lighter {*/
+    /*color: #aaaaaa;*/
+/*}*/
+
+/*p.preparation {white-space: pre}*/
+
+/*.right-button {*/
+    /*float: right;*/
+    /*padding: 10px;*/
+    /*font-size: 125%;*/
+/*}*/
+
+/*.bs-callout{padding:10px 20px;margin:10px 0;border:1px solid #eee;border-left-width:5px;border-radius:3px}*/
+/*.bs-callout h4{margin-top:0;margin-bottom:5px}*/
+/*.bs-callout-info{border-left-color:#1b809e}*/
+/*.bs-callout-info h4{color:#1b809e}*/

@@ -12,7 +12,7 @@ var app = express();
 
 app.use(morgan('dev'));
 app.use(bodyParser.json());
-app.use(express.static(__dirname + "/../static"));
+app.use(express.static(__dirname + "/static"));
 
 app.get("/v1/cells.json", function (req, res) {
     var start = req.query.start ? parseInt(req.query.start) : 0;
