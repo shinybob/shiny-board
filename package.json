@@ -1,0 +1,18 @@
+{
+    "name": "shiny-board",
+    "version": "1.0.0",
+    "description": "Simple menu system for popular links",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "start": "node index.js"
+    },
+    "author": "rob.thurston",
+    "dependencies": {
+        "async": "1.x",
+        "body-parser": "1.x",
+        "express": "4.x",
+        "mongodb": "2.x",
+        "morgan": "1.x"
+    }
+}
