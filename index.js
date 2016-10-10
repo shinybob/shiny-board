@@ -6,9 +6,11 @@ var express = require('express'),
     db = require("./data/db.js"),
     async = require("async");
 
-var _port = 8082;
-
 var app = express();
+
+// var _port = 8082;
+// new line
+app.set('port', (process.env.PORT || 5000));
 
 app.use(morgan('dev'));
 app.use(bodyParser.json());
@@ -80,7 +82,7 @@ db.init_db(function (err) {
         exit(-1);
     } else {
         console.error("Starting Server.");
-        app.listen(_port);
+        app.listen(app.get('port'));
     }
 });
 
