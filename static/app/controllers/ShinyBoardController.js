@@ -65,6 +65,18 @@
             $scope.updateing_cell = false;
         };
 
+        $scope.upload_image = function (cell_data) {
+            cellProvider.upload_image(cell_data, function (err, cell) {
+                if (err) {
+                    $scope.update_cell_error = "(" + err.error + ") " + err.message;
+                } else {
+                    $scope.updateing_cell = false;
+                    $scope.update_cell_error = null;
+                    get_all_cells();
+                }
+            });
+        };
+
         $scope.update_cell = function (cell_data) {
             cellProvider.update_cell(cell_data, function (err, cell) {
                 if (err) {

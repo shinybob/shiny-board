@@ -8,13 +8,32 @@ body {
     padding: 0px;
 }
 
-.close-button {
-    float: right;
+.sb-heading {
+    background-color: #4e8696;
 }
 
-.add-button {
-    float: right;
+.sb-btn-add {
+    /*padding-left: 20px;*/
+    /*float: right;*/
+    /*background-color: #5a5a5a;*/
+    /*color: #e2e2e2;*/
 }
+
+.close-button {
+    float: right;
+    background-color: #61a2b4;
+    color: #ffffff;
+}
+
+.close-button:hover {
+    background-color: #4e8696;
+    color: #ffffff;
+}
+
+/*.sb-btn-add:hover {*/
+    /*background-color: #d27c00;*/
+    /*color: #e2e2e2;*/
+/*}*/
 
 .fav-button {
     font-size: 26px;
@@ -40,6 +59,9 @@ body {
     color: #7d7d7d;
     font-size: 16px;
     font-weight: 400;
+    white-space: nowrap;
+    text-wrap: none;
+    overflow: hidden;
 }
 
 .cell-body:hover {
@@ -49,15 +71,16 @@ body {
     color: #7d7d7d;
 }
 
-.cog {
+.sb-cog {
     margin-bottom: -20px;
-    float: right;
-    color: #FFFFFF;
-    font-size: 24px;
-    font-weight: 500;
+    position: absolute;
+    top:8px;
+    right: 14px;
+    color: #b4b4b4;
+    font-size: 20px;
 }
 
-.cog:hover {
+.sb-cog:hover {
     color: #000000;
 }
 

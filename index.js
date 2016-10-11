@@ -62,6 +62,16 @@ app.post("/v1/cells.json", function (req, res) {
     });
 });
 
+app.post("/v1//upload", function (req, res) {
+    // recipe_handler.update_cell(req.body, function(err, recipe) {
+    //     if (err) {
+    //         return send_error_resp(res, err);
+    //     } else {
+    //         return send_success_resp(res, recipe);
+    //     }
+    // });
+});
+
 
 app.delete("/v1/cells/:cell_id.json", function (req, res) {
     recipe_handler.delete_cell_by_id(req.params.cell_id, function(err) {
