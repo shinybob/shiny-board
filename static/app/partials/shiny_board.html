@@ -7,23 +7,39 @@
 
     <div ng-show="finished_loading">
 
-        <div class="panel panel-heading sb-heading">
-            <div class="row">
-                <div class="col-xs-10">
-                    <input class="form-control input-sm" placeholder="Search..." ng-model="searchFor"/>
-                </div>
 
-                <div class="col-xs-2">
-                    <button ng-hide="adding_cell" ng-click="show_add_cell()" type="button"
-                            class="btn btn-success sb-btn-add">
-                        <span class="glyphicon glyphicon-plus"></span>
-                    </button>
+        <div class="panel sb-panel panel-heading sb-panel-heading">
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="sb-section">
+                        <div class="sb-section-div sb-section-div-search">
+                            <input class="form-control input-sm sb-input-search" placeholder="Search..." ng-model="searchFor"/>
+                        </div>
+                        <div class="sb-section-div">
+                            <button ng-click="show_add_cell()" type="button" class="btn btn-success sb-section-button sb-section-button-add">
+                                <span class="glyphicon glyphicon-plus"></span>
+                            </button>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
+        <!--<div class="panel sb-panel panel-heading sb-panel-heading">-->
+            <!--<div class="row">-->
+                <!--<div class="col-xs-10">-->
+                    <!--<input class="form-control input-sm" placeholder="Search..." ng-model="searchFor"/>-->
+                <!--</div>-->
+<!---->
+                <!--<div class="col-xs-2">-->
+                    <!--<button ng-hide="adding_cell" ng-click="show_add_cell()" type="button"-->
+                            <!--class="btn btn-success sb-btn-add">-->
+                        <!--<span class="glyphicon glyphicon-plus"></span>-->
+                    <!--</button>-->
+                <!--</div>-->
+            <!--</div>-->
 
         <div ng-show="adding_cell">
-            <div class="panel panel-heading" style="background-color: #646464">
+            <div class="panel sb-panel panel-heading sb-sub-panel-heading">
                 <div class="row">
                     <div class="col-xs-12">
                         <div class="alert alert-danger" ng-show="add_cell_error" role="alert">{{add_cell_error}}</div>
@@ -54,8 +70,7 @@
 
 
         <div ng-show="updateing_cell">
-
-            <div class="panel panel-heading" style="background-color: #646464">
+            <div class="panel sb-panel panel-heading sb-sub-panel-heading">
 
                 <div class="row">
                     <div class="col-xs-12">
@@ -92,15 +107,6 @@
                         <button ng-click="update_cell(update_cell_data)" type="button" class="btn btn-success">
                             <span class="glyphicon glyphicon-ok"></span>
                         </button>
-
-                        <form ref='uploadForm'
-                              id='uploadForm'
-                              action='http://localhost:5000/upload'
-                              method='post'
-                              encType="multipart/form-data">
-                            <input type="file" name="sampleFile" />
-                            <input type='submit' value='Upload!' />
-                        </form>
 
                         <button ng-click="hide_update_cell()" type="button" class="btn close-button">
                             <span class="glyphicon glyphicon-remove"></span>
@@ -142,8 +148,8 @@
 
         <div class="row">
             <div class="col-xs-12 col-sm-12 col-md-12">
-                <div class="panel panel-primary">
-                    <div class="panel-footer">
+                <div class="panel">
+                    <div class="panel-footer sb-panel-footer">
                         shiny-board v1.0.0
                     </div>
                 </div>

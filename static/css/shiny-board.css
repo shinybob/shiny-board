@@ -8,15 +8,54 @@ body {
     padding: 0px;
 }
 
-.sb-heading {
+.sb-section {
+    width: 100%;
+    display: table;
+}
+
+.sb-section-div {
+    display: table-cell;
+    width: 100%;
+}
+
+.sb-section-div-search {
+    padding-right: 1em;
+}
+
+.sb-section-input {
+    width: 100%;
+}
+
+.sb-section-button {
+    width: 100%;
+    white-space: nowrap;
+}
+
+/*.sb-section-button-add {*/
+    /*width: 100%;*/
+    /*white-space: nowrap;*/
+/*}*/
+
+.sb-panel {
+    margin-bottom: 5px;
+    /*background-color: #fff;*/
+    border: 0;
+    border-radius: 4px;
+    -webkit-box-shadow: 0;
+    box-shadow: 0;
+}
+
+.sb-panel-footer {
+     padding: 10px 15px;
+     border: 0;
+ }
+
+.sb-panel-heading {
     background-color: #4e8696;
 }
 
-.sb-btn-add {
-    /*padding-left: 20px;*/
-    /*float: right;*/
-    /*background-color: #5a5a5a;*/
-    /*color: #e2e2e2;*/
+.sb-sub-panel-heading {
+    background-color: #646464;
 }
 
 .close-button {
