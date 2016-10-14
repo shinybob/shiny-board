@@ -8,6 +8,11 @@ body {
     padding: 0px;
 }
 
+.sb-thumbnail {
+    width: 30px;
+    height: 30px;
+}
+
 .sb-section {
     width: 100%;
     display: table;
@@ -18,7 +23,17 @@ body {
     width: 100%;
 }
 
-.sb-section-div-search {
+.sb-section-spacer {
+    padding-right: 1em;
+}
+
+.sb-section-div-add-name {
+    width: 50%;
+    padding-right: 1em;
+}
+
+.sb-section-div-add-url {
+    width: 50%;
     padding-right: 1em;
 }
 
@@ -26,10 +41,10 @@ body {
     width: 100%;
 }
 
-.sb-section-button {
-    width: 100%;
-    white-space: nowrap;
-}
+/*.sb-section-button {*/
+    /*width: 100%;*/
+    /*white-space: nowrap;*/
+/*}*/
 
 /*.sb-section-button-add {*/
     /*width: 100%;*/
@@ -46,8 +61,10 @@ body {
 }
 
 .sb-panel-footer {
-     padding: 10px 15px;
-     border: 0;
+    font-size: 10px;
+    color: #989898;
+    padding: 10px 15px;
+    border: 0;
  }
 
 .sb-panel-heading {
@@ -69,20 +86,17 @@ body {
     color: #ffffff;
 }
 
-/*.sb-btn-add:hover {*/
-    /*background-color: #d27c00;*/
-    /*color: #e2e2e2;*/
-/*}*/
-
-.fav-button {
-    font-size: 26px;
-    color: #ff9e00;
-    font-weight: 500;
-    padding-right: 5px;
+.sb-fav-button {
+    background-color: #8d8d8d;
+    color: #ffb925;
 }
 
-.fav-on {
-    color: #ff9e00;
+.sb-fav-button:hover {
+    background-color: #ffffff;
+}
+
+.sb-fav {
+    color: #ffb925;
     font-size: 16px;
     font-weight: 500;
 }

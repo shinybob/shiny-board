@@ -1,4 +1,4 @@
-var shinyBoardApp = angular.module("shinyBoardApp", [ "ngRoute" ]);
+var shinyBoardApp = angular.module("shinyBoardApp", [ "ngRoute", "ngFileUpload"]);
 
 shinyBoardApp.config(function ($routeProvider) {
     $routeProvider

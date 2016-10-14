@@ -12,11 +12,11 @@
             <div class="row">
                 <div class="col-xs-12">
                     <div class="sb-section">
-                        <div class="sb-section-div sb-section-div-search">
+                        <div class="sb-section-div sb-section-spacer">
                             <input class="form-control input-sm sb-input-search" placeholder="Search..." ng-model="searchFor"/>
                         </div>
                         <div class="sb-section-div">
-                            <button ng-click="show_add_cell()" type="button" class="btn btn-success sb-section-button sb-section-button-add">
+                            <button ng-click="show_edit_window()" type="button" class="btn btn-success">
                                 <span class="glyphicon glyphicon-plus"></span>
                             </button>
                         </div>
@@ -24,105 +24,75 @@
                 </div>
             </div>
         </div>
-        <!--<div class="panel sb-panel panel-heading sb-panel-heading">-->
-            <!--<div class="row">-->
-                <!--<div class="col-xs-10">-->
-                    <!--<input class="form-control input-sm" placeholder="Search..." ng-model="searchFor"/>-->
-                <!--</div>-->
-<!---->
-                <!--<div class="col-xs-2">-->
-                    <!--<button ng-hide="adding_cell" ng-click="show_add_cell()" type="button"-->
-                            <!--class="btn btn-success sb-btn-add">-->
-                        <!--<span class="glyphicon glyphicon-plus"></span>-->
-                    <!--</button>-->
-                <!--</div>-->
-            <!--</div>-->
 
-        <div ng-show="adding_cell">
+        <div ng-show="updateing_cell || adding_cell">
             <div class="panel sb-panel panel-heading sb-sub-panel-heading">
                 <div class="row">
                     <div class="col-xs-12">
                         <div class="alert alert-danger" ng-show="add_cell_error" role="alert">{{add_cell_error}}</div>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col-xs-4">
-                        <input class="form-control input-sm" type="text" placeholder="Name"
-                               ng-model="new_cell_data.name"/>
-                    </div>
-                    <div class="col-xs-4">
-                        <input class="form-control input-sm" type="text" placeholder="URL"
-                               ng-model="new_cell_data.url"/>
-                    </div>
-
-                    <div class="col-xs-4">
-                        <button ng-click="add_cell(new_cell_data)" type="button" class="btn btn-success">
-                            <span class="glyphicon glyphicon-ok"></span>
-                        </button>
-
-                        <button ng-click="hide_add_cell()" type="button" class="btn close-button">
-                            <span class="glyphicon glyphicon-remove"></span>
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-
-        <div ng-show="updateing_cell">
-            <div class="panel sb-panel panel-heading sb-sub-panel-heading">
 
                 <div class="row">
                     <div class="col-xs-12">
-                        <div class="alert alert-danger" ng-show="update_cell_error" role="alert">{{update_cell_error}}
+                        <div class="sb-section" >
+                            <div class="sb-section-div sb-section-div-add-name">
+                                <input class="form-control input-sm" type="text" placeholder="Name" ng-model="new_cell_data.name"/>
+                            </div>
+
+                            <div class="sb-section-div sb-section-div-add-url">
+                                <input class="form-control input-sm" type="text" placeholder="URL" ng-model="new_cell_data.url"/>
+                            </div>
+
+                            <div ng-show="updateing_cell" class="sb-section-div sb-section-div-add-url">
+                                <button ng-click="delete_cell(new_cell_data)" type="button" class="btn btn-danger">
+                                    <span class="glyphicon glyphicon-trash"></span>
+                                </button>
+                            </div>
+
+                            <div class="sb-section-div sb-section-spacer">
+                                <button ng-click="accept_clicked(new_cell_data)" type="button" class="btn btn-success">
+                                    <span class="glyphicon glyphicon-ok"></span>
+                                </button>
+                            </div>
+
+                            <div class="sb-section-div">
+                                <button ng-click="hide_edit_window()" type="button" class="btn btn-primary">
+                                    <span class="glyphicon glyphicon-remove"></span>
+                                </button>
+                            </div>
                         </div>
                     </div>
                 </div>
 
                 <div class="row">
-                    <div class="col-xs-12 col-sm-4">
-                        <input class="form-control input-sm" type="text" placeholder="Name"
-                               ng-model="update_cell_data.name"/>
-                    </div>
+                    <div class="col-xs-12">
+                        <form name="myForm" style="margin: 0; padding: 10px 0  0">
+                            <input style="display: inline-block; background-color: #8d8d8d; color: #d7d7d7; padding: 0; margin: 0; border: 0" class="btn btn-primary" type="file" ng-model="new_image" name="file"
+                                   accept="image/*" ngf-max-size="1MB"
+                                   ngf-model-invalid="errorFile">
 
-                    <div class="clearfix visible-xs" style="padding: 5px"></div>
+                            <img ngf-thumbnail="new_image || new_cell_data.image" class="sb-thumbnail img-circle">
 
-                    <div class="col-xs-12 col-sm-4">
-                        <input class="form-control input-sm" type="text" placeholder="URL"
-                               ng-model="update_cell_data.url"/>
-                    </div>
+                            <button class="btn btn-danger" ng-click="new_image = null" ng-show="new_image">
+                                <span class="glyphicon glyphicon-remove"></span>
+                            </button>
 
-                    <div class="clearfix visible-xs" style="padding: 5px"></div>
+                            <div style="display: inline-block;">
+                                <button class="btn sb-fav-button" ng-show="new_cell_data.fav" ng-click="set_favourite(new_cell_data, false)" >
+                                    <span class="glyphicon glyphicon-star "></span>
+                                </button>
 
-                    <div class="col-xs-12 col-sm-4">
-
-                        <button ng-click="delete_cell(update_cell_data)" type="button" class="btn btn-danger">
-                            <span class="glyphicon glyphicon-trash"></span>
-                        </button>
-
-                        <button ng-click="upload_image(update_cell_data)"  type="button" class="btn btn-primary">
-                            <span class="glyphicon glyphicon-upload"></span>
-                        </button>
-
-                        <button ng-click="update_cell(update_cell_data)" type="button" class="btn btn-success">
-                            <span class="glyphicon glyphicon-ok"></span>
-                        </button>
-
-                        <button ng-click="hide_update_cell()" type="button" class="btn close-button">
-                            <span class="glyphicon glyphicon-remove"></span>
-                        </button>
-
-                        <div style="float: right">
-                            <span ng-show="update_cell_data.fav" ng-click="set_favourite(update_cell_data, false)"
-                                  class="glyphicon glyphicon-star fav-button"></span>
-                            <span ng-hide="update_cell_data.fav" ng-click="set_favourite(update_cell_data, true)"
-                                  class="glyphicon glyphicon-star-empty fav-button"></span>
-                        </div>
+                                <button class="btn sb-fav-button"  ng-hide="new_cell_data.fav" ng-click="set_favourite(new_cell_data, true)">
+                                    <span class="glyphicon glyphicon-star-empty"></span>
+                                </button>
+                            </div>
+                        </form>
                     </div>
                 </div>
+
             </div>
         </div>
-
 
         <div class="row">
             <div ng-repeat="cell in cells | filter:{name: searchFor} | orderBy: ['-fav', 'name']">
@@ -130,12 +100,12 @@
                     <div class="cell" ng-click="launch(cell.url)">
                         <div class="cell-body">
 
-                            <img src="../../images/no-icon.png" class="img-circle" width="30" height="30">
+                            <img ng-src="{{cell.image}}" class="img-circle" width="30" height="30">
 
-                            <span ng-click="show_update_cell(cell)"
+                            <span ng-click="show_edit_window(cell)"
                                   class="glyphicon glyphicon-option-vertical sb-cog"></span>
 
-                            <span ng-show="{{cell.fav}}" class="glyphicon glyphicon-star fav-on"></span>
+                            <span ng-show="{{cell.fav}}" class="glyphicon glyphicon-star sb-fav"></span>
 
                             <span>{{cell.name}}</span>
 

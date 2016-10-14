@@ -53,17 +53,13 @@ exports.list_recipes = function () {
 
 exports.add_cell_data = function (cell_data, callback) {
 
-    console.log("Rob - About to add recipe")
     try {
         if (!cell_data.name) throw new Error("missing_name");
         if (!cell_data.url) throw new Error("missing_url");
     } catch (e) {
-        console.log("Rob - Error thrown!!!!")
         return callback({ error: e.message, message: "Please complete fields."});
 
     }
-    console.log("Rob - Should not rech this")
-
 
     async.waterfall([
     // console.log("Should not be here if missing data!!!!!!!!")
@@ -102,7 +98,7 @@ exports.get_cell_by_id = function (cell_id, callback) {
 exports.update_cell = function (cell_data, callback) {
     async.waterfall([
         function (cb) {
-            db.recipes.updateOne({ cell_id: cell_data.cell_id }, {$set: {"name":cell_data.name, "fav":cell_data.fav, "col":cell_data.col, "url":cell_data.url}} , {w: 1}, cb);
+            db.recipes.updateOne({ cell_id: cell_data.cell_id }, {$set: {"name":cell_data.name, "image":cell_data.image, "fav":cell_data.fav, "col":cell_data.col, "url":cell_data.url}} , {w: 1}, cb);
         }], function (err) {
         callback(null);
     });

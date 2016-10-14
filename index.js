@@ -1,4 +1,3 @@
-
 var express = require('express'),
     bodyParser = require('body-parser'),
     morgan = require('morgan'),
@@ -8,8 +7,6 @@ var express = require('express'),
 
 var app = express();
 
-// var _port = 8082;
-// new line
 app.set('port', (process.env.PORT || 5000));
 
 app.use(morgan('dev'));
@@ -42,7 +39,6 @@ app.get("/v1/cells/:cell_id.json", function (req, res) {
 });
 
 app.put("/v1/cells.json", function (req, res) {
-    console.log("Rob - BE - Recieved put for adding ne cell");
     recipe_handler.add_cell_data(req.body, function(err, recipe) {
         if (err) {
             return send_error_resp(res, err);
@@ -61,17 +57,6 @@ app.post("/v1/cells.json", function (req, res) {
         }
     });
 });
-
-app.post("/v1//upload", function (req, res) {
-    // recipe_handler.update_cell(req.body, function(err, recipe) {
-    //     if (err) {
-    //         return send_error_resp(res, err);
-    //     } else {
-    //         return send_success_resp(res, recipe);
-    //     }
-    // });
-});
-
 
 app.delete("/v1/cells/:cell_id.json", function (req, res) {
     recipe_handler.delete_cell_by_id(req.params.cell_id, function(err) {

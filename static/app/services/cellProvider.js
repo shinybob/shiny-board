@@ -15,7 +15,8 @@
         };
 
         this.add_cell = function (cell_data, callback) {
-            console.log("Rob - FE - About to put", this._server_host + "/v1/cells.json")
+            console.log("add_cell")
+            console.log(cell_data)
             $http.put(this._server_host + "/v1/cells.json", cell_data)
                 .success(function (data, status, headers, conf) {
                     callback(null, data);
@@ -43,16 +44,6 @@
                 .error(function (data, status, headers, conf) {
                     callback(data);
                 });
-        };
-
-        this.upload_image = function (cell_data, callback) {
-            $http.post(this._server_host + "/v1/cells.json", cell_data)
-                .success(function (data, status, headers, conf) {
-                    callback(null, data);
-                })
-                .error(function (data, status, headers, conf) {
-                    callback(data);
-                })
         };
 
         this.update_cell = function (cell_data, callback) {
