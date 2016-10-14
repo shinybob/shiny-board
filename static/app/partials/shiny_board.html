@@ -68,8 +68,8 @@
                 <div class="row">
                     <div class="col-xs-12">
                         <form name="myForm" style="margin: 0; padding: 10px 0  0">
-                            <input style="display: inline-block; background-color: #8d8d8d; color: #d7d7d7; padding: 0; margin: 0; border: 0" class="btn btn-primary" type="file" ng-model="new_image" name="file"
-                                   accept="image/*" ngf-max-size="1MB"
+                            <input style="display: inline-block" class="btn btn-primary" type="file" ngf-select ng-model="new_image" name="file"
+                                   accept="image/*" ngf-max-size="2MB" required
                                    ngf-model-invalid="errorFile">
 
                             <img ngf-thumbnail="new_image || new_cell_data.image" class="sb-thumbnail img-circle">
