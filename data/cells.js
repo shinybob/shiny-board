@@ -7,40 +7,16 @@ var db = require("./db.js"),
  *  start, number, ordervals, callback 
  *  filterfieldvals, start, number, ordervals, callback 
  */
-exports.list_recipes = function () {
-    var start, number, callback, ordervals, filterfieldvals;
-
-    switch (arguments.length) {
-      case 3:
-        start = arguments[0];
-        number = arguments[1];
-        callback = arguments[2];
-        break;
-      case 4:
-        start = arguments[0];
-        number = arguments[1];
-        ordervals = arguments[2];
-        callback = arguments[3];
-        break;
-      case 5:
-        filterfieldvals = arguments[0];
-        start = arguments[1];
-        number = arguments[2];
-        ordervals = arguments[3];
-        callback = arguments[4];
-        break;
-      default:
-        throw new Error("This is not a valid use");
-    }
-
+exports.list_recipes = function (user_id, callback) {
+    var filterfieldvals = {user_id:user_id};
     var filter = filterfieldvals ? filterfieldvals : {};
-    var orderby = ordervals ? ordervals : { name : 1 };
+    // var orderby = ordervals ? ordervals : { name : 1 };
     var output = [];
 
-    var cursor = db.recipes.find(filter)
-        .sort(orderby)
-        .skip(start)
-        .limit(number);
+    var cursor = db.cellsDB.find(filter)
+        // .sort(orderby)
+        // .skip(start)
+        // .limit(number);
 
     cursor.on("data", function (recipe) {
         output.push(recipe);
@@ -52,7 +28,6 @@ exports.list_recipes = function () {
 };
 
 exports.add_cell_data = function (cell_data, callback) {
-
     try {
         if (!cell_data.name) throw new Error("missing_name");
         if (!cell_data.url) throw new Error("missing_url");
@@ -62,28 +37,28 @@ exports.add_cell_data = function (cell_data, callback) {
     }
 
     async.waterfall([
-    // console.log("Should not be here if missing data!!!!!!!!")
-        // get a unique id for this new recipe.
         function (cb) {
             get_unique_cell_id(cell_data, cb);
         },
-        // pass it on to the database.
         function (cell_id, cb) {
             cell_data = JSON.parse(JSON.stringify(cell_data));
             cell_data.cell_id = cell_id;
-            console.log(JSON.parse(JSON.stringify(cell_data)));
-
-            db.recipes.insertOne(cell_data, { w: 1 }, cb);
+            store_image(cell_data);
+            db.cellsDB.insertOne(cell_data, { w: 1 }, cb);
         }
     ], function (err, results) {
         callback(err, results);
     });
 };
 
+function store_image (cell_data) {
+    console.log("During");
+}
+
 exports.get_cell_by_id = function (cell_id, callback) {
     var found_cell = null;
 
-    var cursor = db.recipes.find({ cell_id: cell_id }).limit(1);
+    var cursor = db.cellsDB.find({ cell_id: cell_id }).limit(1);
 
     cursor.on("data", function (cell) {
         found_cell = cell;
@@ -96,9 +71,17 @@ exports.get_cell_by_id = function (cell_id, callback) {
 
 
 exports.update_cell = function (cell_data, callback) {
+
+    try {
+        if (!cell_data.name) throw new Error("missing_name");
+        if (!cell_data.url) throw new Error("missing_url");
+    } catch (e) {
+        return callback({ error: e.message, message: "Please complete fields."});
+    }
+
     async.waterfall([
         function (cb) {
-            db.recipes.updateOne({ cell_id: cell_data.cell_id }, {$set: {"name":cell_data.name, "image":cell_data.image, "fav":cell_data.fav, "col":cell_data.col, "url":cell_data.url}} , {w: 1}, cb);
+            db.cellsDB.updateOne({ cell_id: cell_data.cell_id }, {$set: {"name":cell_data.name, "image":cell_data.image,  "image_bg_colour":cell_data.image_bg_colour, "fav":cell_data.fav, "col":cell_data.col, "url":cell_data.url, "notes":cell_data.notes}} , {w: 1}, cb);
         }], function (err) {
         callback(null);
     });
@@ -108,7 +91,16 @@ exports.update_cell = function (cell_data, callback) {
 exports.delete_cell_by_id = function (cell_id, callback) {
     async.waterfall([
         function (cb) {
-            db.recipes.deleteOne({ cell_id: cell_id }, {w: 1}, cb);
+            db.cellsDB.deleteOne({ cell_id: cell_id }, {w: 1}, cb);
+        }], function (err) {
+        callback(null);
+    });
+};
+
+exports.delete_all = function (callback) {
+    async.waterfall([
+        function (cb) {
+            db.cellsDB.deleteMany({}, {w: 1}, cb);
         }], function (err) {
         callback(null);
     });
@@ -134,7 +126,7 @@ function get_unique_cell_id (recipe_data, callback) {
 
             // only set this to true if we see a recipe!
             ok = true;
-            var cursor = db.recipes.find({ recipe_id: proposed_id }).limit(1);
+            var cursor = db.cellsDB.find({ recipe_id: proposed_id }).limit(1);
             cursor.on("data", function (recipe) {
                 console.log("I got a recipe.....");
                 if (recipe) {

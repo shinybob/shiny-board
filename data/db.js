@@ -4,7 +4,7 @@ var MongoClient = require('mongodb').MongoClient,
     assert = require('assert');
 
 // Connection URL
-// var url = 'mongodb://localhost:27017/recipesapp';
+// var url = 'mongodb://localhost:27017/shiny-board';
 var url = 'mongodb://shinybob:kennard@ds049446.mlab.com:49446/shiny-board';
 
 var _db;
@@ -17,10 +17,14 @@ exports.init_db = function (callback) {
         _db = db;
 
         // Got the connection, now get the recipes collection. It's easy.
-        exports.recipes = _db.collection("shiny-board");
+        exports.cellsDB = _db.collection("shiny-board-cells");
+        exports.accountsDB = _db.collection("shiny-board-accounts");
+        exports.imagesDB = _db.collection("shiny-board-images");
         callback(null);
     });
 }    
 
 // Anybody can just grab this and start making queries on it if they want.
-exports.recipes = null;
+exports.cellsDB = null;
+exports.accountsDB = null;
+exports.imagesDB = null;

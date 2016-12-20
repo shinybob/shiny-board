@@ -4,8 +4,8 @@
 
         this._server_host = "";
 
-        this.get_all_cells = function (callback) {
-            $http.get(this._server_host + "/v1/cells.json")
+        this.get_all_cells = function (user_id, callback) {
+            $http.get(this._server_host + "/v1/user_cells/" + user_id + ".json")
                 .success(function (data, status, headers, conf) {
                     callback(null, data);
                 })
@@ -15,8 +15,6 @@
         };
 
         this.add_cell = function (cell_data, callback) {
-            console.log("add_cell")
-            console.log(cell_data)
             $http.put(this._server_host + "/v1/cells.json", cell_data)
                 .success(function (data, status, headers, conf) {
                     callback(null, data);
@@ -26,8 +24,18 @@
                 });
         };
 
-        this.get_cell_by_id = function (cell_id, callback) {
-            $http.get(this._server_host + "/v1/cells/" + cell_id + ".json")
+        // this.get_cell_by_id = function (cell_id, callback) {
+        //     $http.get(this._server_host + "/v1/cells/" + cell_id + ".json")
+        //         .success(function (data, status, headers, conf) {
+        //             callback(null, data);
+        //         })
+        //         .error(function (data, status, headers, conf) {
+        //             callback(data);
+        //         });
+        // };
+
+        this.delete_all_cells = function (callback) {
+            $http.delete(this._server_host + "/v1/delete_all_cells")
                 .success(function (data, status, headers, conf) {
                     callback(null, data);
                 })
@@ -52,7 +60,7 @@
                     callback(null, data);
                 })
                 .error(function (data, status, headers, conf) {
-                    callback(data);
+                    callback(data, status);
                 })
         };
     }

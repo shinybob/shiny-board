@@ -2,6 +2,7 @@ var express = require('express'),
     bodyParser = require('body-parser'),
     morgan = require('morgan'),
     recipe_handler = require("./handlers/recipes.js"),
+    account_handler = require("./handlers/account.js"),
     db = require("./data/db.js"),
     async = require("async");
 
@@ -13,11 +14,48 @@ app.use(morgan('dev'));
 app.use(bodyParser.json());
 app.use(express.static(__dirname + "/static"));
 
-app.get("/v1/cells.json", function (req, res) {
-    var start = req.query.start ? parseInt(req.query.start) : 0;
-    var pageSize = req.query.pageSize ? parseInt(req.query.pageSize) : 100;
+app.put("/v1/create_new_user", function (req, res) {
+    account_handler.create_new_user(req.body, function(err, user_data) {
+        if (err) {
+            return send_error_resp(res, err);
+        } else {
+            return send_success_resp(res, user_data);
+        }
+    });
+});
 
-    recipe_handler.get_recipes(start, pageSize, function (err, recipes) {
+app.post("/v1/update_user.json", function (req, res) {
+    account_handler.update_user(req.body, function(err, recipe) {
+        if (err) {
+            return send_error_resp(res, err);
+        } else {
+            return send_success_resp(res, recipe);
+        }
+    });
+});
+
+app.post("/v1/account.json", function (req, res) {
+    account_handler.login(req.body, function(err, user_data) {
+        if (err) {
+            return send_error_resp(res, err);
+        } else {
+            return send_success_resp(res, user_data);
+        }
+    });
+});
+
+app.post("/v1/get_user_data_from_id", function (req, res) {
+    account_handler.get_user_data_from_id(req.body, function(err, user_data) {
+        if (err) {
+            return send_error_resp(res, err);
+        } else {
+            return send_success_resp(res, user_data);
+        }
+    });
+});
+
+app.get("/v1/user_cells/:user_id.json", function (req, res) {
+    recipe_handler.get_user_cells(req.params.user_id, function (err, recipes) {
         if (err) {
             return send_error_resp(res, err);
         } else {
@@ -25,18 +63,31 @@ app.get("/v1/cells.json", function (req, res) {
         }
     });
 });
+//
+// app.get("/v1/cells.json", function (req, res) {
+//     var start = req.query.start ? parseInt(req.query.start) : 0;
+//     var pageSize = req.query.pageSize ? parseInt(req.query.pageSize) : 100;
+//
+//     recipe_handler.get_recipes(start, pageSize, function (err, recipes) {
+//         if (err) {
+//             return send_error_resp(res, err);
+//         } else {
+//             return send_success_resp(res, recipes);
+//         }
+//     });
+// });
 
-app.get("/v1/cells/:cell_id.json", function (req, res) {
-    recipe_handler.get_cell_by_id(req.params.cell_id, function (err, cell) {
-        if (err) {
-            return send_error_resp(res, err);
-        } else if (!cell) {
-            return send_error_resp(res, 400, "no_such_cell", "That does not appear to be a valid cell for cell_id ");
-        } else {
-            send_success_resp(res, cell);
-        }
-    });
-});
+// app.get("/v1/cells/:cell_id.json", function (req, res) {
+//     recipe_handler.get_cell_by_id(req.params.cell_id, function (err, cell) {
+//         if (err) {
+//             return send_error_resp(res, err);
+//         } else if (!cell) {
+//             return send_error_resp(res, 400, "no_such_cell", "That does not appear to be a valid cell for cell_id ");
+//         } else {
+//             send_success_resp(res, cell);
+//         }
+//     });
+// });
 
 app.put("/v1/cells.json", function (req, res) {
     recipe_handler.add_cell_data(req.body, function(err, recipe) {
@@ -70,6 +121,18 @@ app.delete("/v1/cells/:cell_id.json", function (req, res) {
     });
 });
 
+app.delete("/v1/delete_all_cells", function (req, res) {
+    recipe_handler.delete_all_cells(function(err) {
+        if (err) {
+            return send_error_resp(res, err);
+        } else {
+            res.setHeader('Content-Type', 'application/json');
+            res.status(200).send();
+            res.end();
+        }
+    });
+});
+
 
 db.init_db(function (err) {
     if (err) {
@@ -80,8 +143,6 @@ db.init_db(function (err) {
         app.listen(app.get('port'));
     }
 });
-
-
 
 
 

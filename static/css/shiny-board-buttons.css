@@ -1,0 +1,138 @@
+.sb-button {
+    width: 30px;
+    height: 30px;
+    display: inline-block;
+    border: 0;
+    border-radius: 5px;
+    background-color: transparent;
+    color: #202e47;
+    margin: auto;
+    cursor: pointer;
+    text-decoration: none;
+    outline: none;
+}
+
+.sb-button:hover {
+    background-color: #ffcb1f;
+    color: #202e47;
+}
+
+.sb-button-text {
+    font-size: 12px;
+    font-weight: 600;
+    border: 1px solid #d3d3d3;
+    width: auto;
+}
+
+.sb-button-text:hover {
+    border: solid 1px #ffcb1f;
+}
+
+.sb-image-upload {
+    font-size: 12px;
+    font-weight: 600;
+    border: 1px solid #d3d3d3;
+    padding: 5px 10px 5px 8px;
+    margin: 0;
+    width: 30px;
+    height: 30px;
+    display: inline-block;
+    border-radius: 5px;
+    background-color: transparent;
+    color: #202e47;
+    cursor: pointer;
+    text-decoration: none;
+    outline: none;
+}
+
+.sb-image-upload:hover {
+    border: solid 1px #ffcb1f;
+    background-color: #ffcb1f;
+    color: #202e47;
+}
+
+.sb-image-upload-hidden {
+    width: 0.1px;
+    height: 0.1px;
+    opacity: 0;
+    overflow: hidden;
+    position: absolute;
+    z-index: -1;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.sb-button-white{
+    color: #ffffff;
+}
+
+.sb-button-light {
+    float: right;
+}
+
+.sb-button-light:hover {
+    color: white;
+}
+
+.sb-button-resizeable {
+    width: auto;
+}
+
+
+.sb-header-add-button {
+    color: #ffffff;
+}
+
+
+
+.sb-colour-orange {
+    color: #ffc923;
+}
+
+
+.sb-colour-green {
+    color: #aeffaa;
+}
+
+.sb-colour-grey {
+    color: #d3d3d3;
+}
+
+.sb-edit-cell-fav{
+    margin-left: 10px;
+    color: #e7c62a;
+}
+
+.sb-edit-cell-fav:hover{
+    background-color: white;
+    border: 1px solid grey;
+}
+
+.sb-cell-options {
+     float: right;
+ }
+
+.sb-cell-options:hover {
+    background-color: #ffffff;
+}
+
+.sb-button-left-space {
+    margin-left: 10px;
+}
+
+.sb-button-bottom-space {
+    margin-bottom: 10px;
+}

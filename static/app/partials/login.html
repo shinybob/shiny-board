@@ -1,0 +1,24 @@
+<div class="sb-login-box" ng-show="show_new_user">
+    <div class="sb-login-header">
+        Create Account
+    </div>
+    <div class="sb-login-error" ng-show="login_error">{{login_error}}</div>
+
+    <input class="form-control sb-form-input" placeholder="User Name" ng-model="name"/>
+    <input type="password" class="form-control sb-form-input" placeholder="Password" ng-model="password"/>
+    <input class="form-control sb-form-input" placeholder="Email" ng-model="email"/>
+    <button ng-click="create_new_user()" type="button" class="btn btn-success">Create New Account</button>
+    <button ng-click="show_login_dialogue()" type="button" class="btn btn-link">Existing users login</button>
+</div>
+
+<div class="sb-login-box" ng-show="show_login">
+    <div class="sb-login-header">
+        Login
+    </div>
+    <div class="sb-login-error" ng-show="login_error">{{login_error}}</div>
+
+    <input class="form-control sb-form-input" placeholder="User Name" ng-model="name"/>
+    <input type="password" class="form-control sb-form-input" placeholder="Password" ng-model="password"/>
+    <button ng-click="login()" type="button" class="btn btn-success">Login</button>
+    <button ng-click="show_new_user_dialogue()" type="button" class="btn btn-link">Create New Account</button>
+</div>
