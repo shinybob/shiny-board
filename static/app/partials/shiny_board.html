@@ -25,7 +25,7 @@
         --><span ng-repeat="cell in cells | filter:{name: searchFor} | orderBy: ['-fav', 'name']"><!--
 
             SMALL CELL
-            --><div class="sb-cell" ng-show="view_mode=='1'"><!--
+            --><div class="sb-cell" ng-show="view_mode=='1'" ng-click="launch(cell.url)"><!--
                 --><div class="sb-cell-header sb-cell-header-small">{{cell.name}}</div><!--
                 --><button ng-click="show_cell_dialogue(cell)" type="button" class="sb-button sb-colour-grey sb-float-right"><!--
                     --><span class="glyphicon glyphicon-option-vertical"></span><!--
@@ -33,8 +33,7 @@
             --></div><!--
 
             MEDIUM CELL
- ng-click="launch(cell.url)"
-            --><div class="sb-cell" ng-show="view_mode=='2'" ><!--
+            --><div class="sb-cell" ng-show="view_mode=='2'" ng-click="launch(cell.url)"><!--
                 --><img ng-src="{{cell.image || default_image}}" class="sb-medium-image"><!--
                 --><div class="sb-cell-header sb-cell-header-medium">{{cell.name}}</div><!--
                 --><button ng-click="show_cell_dialogue(cell)" type="button" class="sb-button sb-colour-grey sb-float-right"><!--
@@ -43,7 +42,7 @@
             --></div><!--
 
             LARGE CELL
-            --><div class="sb-cell" ng-show="view_mode=='3'"><!--
+            --><div class="sb-cell" ng-show="view_mode=='3'" ng-click="launch(cell.url)"><!--
                 --><div class="sb-large-image-container"><img ng-src="{{cell.image || default_image}}" class="sb-large-image"></div><!--
                 --><div class="sb-cell-header sb-cell-header-large">{{cell.name}}</div><!--
                 --><button ng-click="show_cell_dialogue(cell)" type="button" class="sb-button sb-colour-grey sb-float-right"><!--
