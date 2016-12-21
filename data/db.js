@@ -4,8 +4,8 @@ var MongoClient = require('mongodb').MongoClient,
     assert = require('assert');
 
 // Connection URL
-var url = 'mongodb://localhost:27017/shiny-board';
-// var url = 'mongodb://shinybob:kennard@ds049446.mlab.com:49446/shiny-board';
+// var url = 'mongodb://localhost:27017/shiny-board';
+var url = 'mongodb://shinybob:kennard@ds049446.mlab.com:49446/shiny-board';
 
 var _db;
 
