@@ -13,8 +13,8 @@
 }
 
 .sb-button:hover {
-    background-color: #ffcb1f;
-    color: #202e47;
+    background-color: #8effb0;
+    color: #404f4d;
 }
 
 .sb-button-text {
@@ -25,7 +25,7 @@
 }
 
 .sb-button-text:hover {
-    border: solid 1px #ffcb1f;
+    border: solid 1px #8effb0;
 }
 
 .sb-image-upload {
@@ -46,9 +46,9 @@
 }
 
 .sb-image-upload:hover {
-    border: solid 1px #ffcb1f;
-    background-color: #ffcb1f;
-    color: #202e47;
+    border: solid 1px #8effb0;
+    background-color: #8effb0;
+    color: #404f4d;
 }
 
 .sb-image-upload-hidden {

@@ -28,6 +28,8 @@ exports.list_recipes = function (user_id, callback) {
 };
 
 exports.add_cell_data = function (cell_data, callback) {
+    console.log("BE cell add")
+    console.log(cell_data)
     try {
         if (!cell_data.name) throw new Error("missing_name");
         if (!cell_data.url) throw new Error("missing_url");
@@ -43,17 +45,13 @@ exports.add_cell_data = function (cell_data, callback) {
         function (cell_id, cb) {
             cell_data = JSON.parse(JSON.stringify(cell_data));
             cell_data.cell_id = cell_id;
-            store_image(cell_data);
+            // store_image(cell_data);
             db.cellsDB.insertOne(cell_data, { w: 1 }, cb);
         }
     ], function (err, results) {
         callback(err, results);
     });
 };
-
-function store_image (cell_data) {
-    console.log("During");
-}
 
 exports.get_cell_by_id = function (cell_id, callback) {
     var found_cell = null;
@@ -69,9 +67,9 @@ exports.get_cell_by_id = function (cell_id, callback) {
     });
 };
 
-
 exports.update_cell = function (cell_data, callback) {
-
+console.log("BE cell")
+console.log(cell_data)
     try {
         if (!cell_data.name) throw new Error("missing_name");
         if (!cell_data.url) throw new Error("missing_url");
@@ -128,18 +126,15 @@ function get_unique_cell_id (recipe_data, callback) {
             ok = true;
             var cursor = db.cellsDB.find({ recipe_id: proposed_id }).limit(1);
             cursor.on("data", function (recipe) {
-                console.log("I got a recipe.....");
                 if (recipe) {
                     ok = false;
                 }
             });
             cursor.once("end", function () {
-                console.log("Im done.....");
                 cb(null);
             });
         },
         function () {
-            console.log("QUeried about OK: " + ok);
             return ok;
         },
         function (err, results) {
