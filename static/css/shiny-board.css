@@ -47,6 +47,18 @@ body {
     background-color: #FFFFFF;
 }
 
+.sb-form-notes {
+    width: 100%;
+    resize:vertical;
+    padding: 6px 12px;
+    border: 0;
+}
+
+.sb-form-notes:focus {
+    outline: 0;
+    background-color: #8effb0;
+}
+
 .sb-form-input {
     width: 100%;
     padding: 6px 12px;
@@ -173,12 +185,12 @@ body {
     padding: 5px 5px 5px 5px;
     margin: 5px;
     border-radius: 5px;
-    width: calc(15% - 10px);
     cursor: pointer;
     border: solid 1px #404f4d;
     box-shadow: 2px 2px 4px 0px rgba(0,0,0,0.15);
     -webkit-box-shadow: 2px 2px 4px 0px rgba(0,0,0,0.15);
     -moz-box-shadow: 2px 2px 4px 0px rgba(0,0,0,0.15);
+    width: calc(20% - 10px);
 }
 
 @media screen and (max-width: 1200px) {

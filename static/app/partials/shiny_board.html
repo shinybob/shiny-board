@@ -3,7 +3,7 @@
     <!-- -------------------------------- -->
 
     <div class="sb-header"><!--
-        --><input class="sb-header-search" placeholder="Search..." ng-model="searchFor"/><!--
+            --><input class="sb-header-search" placeholder="Search..." ng-model="searchFor" autofocus /><!--
         --><button ng-click="show_cell_dialogue()" type="button" class="sb-button sb-button-white"><!--
             --><span class="glyphicon glyphicon-plus"></span><!--
         --></button><!--
@@ -96,7 +96,7 @@
     <table class="sb-table">
         <tr>
             <td class="sb-td sb-td-label">Notes</td>
-            <td class="sb-td sb-td-value"><input style="margin: 0" class="sb-form-input" placeholder="Notes" ng-model="new_cell_data.notes"/></td>
+            <td class="sb-td sb-td-value"><textarea rows="3" style="margin: 0" class="sb-form-notes" placeholder="Notes" ng-model="new_cell_data.notes"/></td>
         </tr>
     </table><!--
 
