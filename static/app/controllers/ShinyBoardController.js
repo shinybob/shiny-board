@@ -6,6 +6,8 @@
             return;
         }
 
+
+
         ShinyBoardController.VIEW_MODE_COMPACT = 1;
         ShinyBoardController.VIEW_MODE_REGULAR = 2;
         ShinyBoardController.VIEW_MODE_LARGE = 3;
@@ -288,6 +290,10 @@
             return csv;
         }
 
+        function refreshTimer() {
+            window.location = "#/";
+        }
+
         function get_all_cells() {
             $scope.cells = cellProvider.get_all_cells(accountProvider.user_data._id, function (err, cells) {
                 $scope.finished_loading = true;
@@ -300,6 +306,7 @@
         }
 
         get_all_cells();
+        setTimeout(refreshTimer, (60000 * 5));
     }
 
     shinyBoardApp.controller("ShinyBoardController", ['$scope', 'cellProvider', 'accountProvider', ShinyBoardController]);
