@@ -5,7 +5,7 @@
 }
 
 body {
-    background-image: linear-gradient(#2aabd2, #228cab);
+    background-image: linear-gradient(#acacac, #e2e2e2);
 }
 
 .sb-dialogue-text {
@@ -87,8 +87,8 @@ body {
     margin: 0 0 0px 0;
     padding: 15px 5px 15px 15px;
     min-height: 50px;
-    /*background-color: #1f5b56;*/
-    background-image: linear-gradient(#404f4d, #34403e);
+    /*background-color: #1d748e;*/
+    background-image: linear-gradient(#575757, #3b3b3b);
 }
 
 .sb-header-search {
@@ -100,6 +100,11 @@ body {
     padding: 0px 0px 0px 10px;
     border: 0;
     border-radius: 5px;
+}
+
+.sb-header-search:focus {
+    outline: 0;
+    border: 2px solid #8effb0;
 }
 
 .sb-header-options {
