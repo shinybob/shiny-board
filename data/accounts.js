@@ -98,8 +98,6 @@ exports.update_user = function (new_user_data, callback) {
     var error = validate_user_details(new_user_data, callback);
     if(error) return callback(error);
 
-    console.log(new_user_data)
-
     async.waterfall([
         function (cb) {
             get_user_by_name(new_user_data.name, cb);

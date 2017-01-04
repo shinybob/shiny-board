@@ -28,8 +28,6 @@ exports.list_recipes = function (user_id, callback) {
 };
 
 exports.add_cell_data = function (cell_data, callback) {
-    console.log("BE cell add")
-    console.log(cell_data)
     try {
         if (!cell_data.name) throw new Error("missing_name");
         if (!cell_data.url) throw new Error("missing_url");
@@ -68,8 +66,6 @@ exports.get_cell_by_id = function (cell_id, callback) {
 };
 
 exports.update_cell = function (cell_data, callback) {
-console.log("BE cell")
-console.log(cell_data)
     try {
         if (!cell_data.name) throw new Error("missing_name");
         if (!cell_data.url) throw new Error("missing_url");

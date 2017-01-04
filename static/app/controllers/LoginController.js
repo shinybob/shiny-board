@@ -79,9 +79,6 @@
 
         $scope.on_login_sucessful = function (user_data) {
             $scope.add_cell_error = null;
-
-            console.log(user_data._id, typeof  user_data._id)
-
             accountProvider.user_data = user_data;
             localStorage.setItem("user_id", user_data.user_id);
             localStorage.setItem("name", user_data.name);
