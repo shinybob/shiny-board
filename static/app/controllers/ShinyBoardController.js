@@ -195,8 +195,24 @@
             $scope.update_cell_error = null;
         };
 
+        $scope.onKeyUp = function (event) {
+            if(event.code === "Enter" && $scope.filteredList.length > 0) {
+                $scope.launch($scope.filteredList[0].url);
+            }
+        };
+
         $scope.launch = function (url) {
             window.location = url;
+        };
+
+        $scope.getStyle = function (isFav) {
+            var style = {};
+
+            if(isFav) {
+                return {'border-color': '#ffec62'};
+            }
+
+            return style;
         };
 
         $scope.set_favourite = function (cell_data, state) {

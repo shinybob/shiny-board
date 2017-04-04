@@ -3,7 +3,7 @@
     <!-- -------------------------------- -->
 
     <div class="sb-header"><!--
-            --><input class="sb-header-search" placeholder="Search..." ng-model="searchFor" autofocus /><!--
+            --><input class="sb-header-search" placeholder="Search..." ng-model="searchFor" autofocus ng-keyup="onKeyUp($event)"/><!--
         --><button ng-click="show_cell_dialogue()" type="button" class="sb-button sb-button-white"><!--
             --><span class="glyphicon glyphicon-plus"></span><!--
         --></button><!--
@@ -19,10 +19,10 @@
     <!-- CELLS -->
     <!-- -------------------------------- -->
 
-    <div class="sb-container"><span ng-repeat="cell in cells | filter:{name: searchFor} | orderBy: ['-fav', 'name']"><!--
+    <div class="sb-container"><span ng-repeat="cell in (filteredList=(cells | filter:{name: searchFor} | orderBy: ['-fav', 'name']))"><!--
 
         SMALL CELL
-        --><div class="sb-cell" ng-show="view_mode=='1'" ng-click="launch(cell.url)"><!--
+        --><div class="sb-cell" ng-show="view_mode=='1'" ng-click="launch(cell.url)"  ng-style="getStyle(cell.fav)"><!--
             --><div class="sb-cell-header sb-cell-header-small">{{cell.name}}</div><!--
             --><button ng-click="show_cell_dialogue(cell)" type="button" class="sb-button sb-colour-grey sb-float-right"><!--
                 --><span class="glyphicon glyphicon-option-vertical"></span><!--

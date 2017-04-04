@@ -34,9 +34,6 @@ exports.get_user_data_from_id = function (user_to_find, callback) {
     var filter = {user_id: Number(user_to_find.user_id)};
     var cursor = db.accountsDB.find(filter).limit(1);
 
-//rob1479980359177 password1 1479980360474
-//rob1479980383504 password1 1479980384591
-
     cursor.on("data", function (user_data) {
         found_user_data = user_data;
     });

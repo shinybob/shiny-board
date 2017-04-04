@@ -113,7 +113,12 @@
 
 .sb-edit-cell-fav{
     margin-left: 10px;
-    color: #e7c62a;
+    color: #ffec62;
+}
+.sb-fav-icon-bg {
+    margin-left: 10px;
+    color: #ffec62;
+    font-size: 50px;
 }
 
 .sb-edit-cell-fav:hover{

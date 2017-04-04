@@ -4,8 +4,23 @@ var MongoClient = require('mongodb').MongoClient,
     assert = require('assert');
 
 // Connection URL
-// var url = 'mongodb://localhost:27017/shiny-board';
-var url = 'mongodb://shinybob:kennard@ds049446.mlab.com:49446/shiny-board';
+var url = 'mongodb://localhost:27017/shiny-board';
+// var url = 'mongodb://shinybob:kennard@ds049446.mlab.com:49446/shiny-board';
+
+/************************************************************
+ * Running locally
+ ************************************************************
+ *
+ * Set BD path in seperate terminal
+ * mongod --dbpath /db
+ *
+ * Then start server
+ * npm start
+ *
+ * Then go to localhost
+ * http://localhost:5000/#/cells
+ *
+ ************************************************************/
 
 var _db;
 
