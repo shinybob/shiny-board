@@ -12,6 +12,11 @@
 
   <script type='text/javascript' src="js/ng-file-upload-shim.min.js"></script> <!-- for no html5 browsers support -->
   <script type='text/javascript' src="js/ng-file-upload.min.js"></script>
+  <script>if ('serviceWorker' in navigator) {
+    navigator.serviceWorker
+            .register('./serviceworker.js')
+            .then(function() { console.log('Service Worker Registered'); });
+  }</script>
 
 </head>
 <body>

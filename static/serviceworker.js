@@ -1,13 +1,14 @@
 var urls = ["/"];
 
 self.addEventListener("install", function(event) {
-    console.log("The SW is now installed");
+    console.log("[SW] install");
     event.waitUntil(caches.open("converter").then(function(cache) {
         return cache.addAll(urls);
     }));
 });
 
 self.addEventListener('fetch', function(event) {
+    console.log("[SW] fetch");
     event.respondWith(
         caches.match(event.request)
             .then(function(response) {
