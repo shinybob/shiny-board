@@ -12,16 +12,16 @@
 
   <script type='text/javascript' src="js/ng-file-upload-shim.min.js"></script> <!-- for no html5 browsers support -->
   <script type='text/javascript' src="js/ng-file-upload.min.js"></script>
-  <script>if ('serviceWorker' in navigator) {
-    navigator.serviceWorker
-            .register('./serviceworker.js')
-            .then(function() { console.log('Service Worker Registered'); });
-  }</script>
 
+  <link rel="manifest" href="manifest.json">
 </head>
 <body>
   <div id="content" ng-view></div>
-
+  <script>if ('serviceWorker' in navigator) {
+    navigator.serviceWorker
+            .register('serviceworker.js')
+            .then(function() { console.log('Service Worker Registered'); });
+  }</script>
   <script type='text/javascript' src="app/app.js"></script>
   <script type='text/javascript' src="app/controllers/ShinyBoardController.js"></script>
   <script type='text/javascript' src="app/controllers/LoginController.js"></script>

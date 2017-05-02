@@ -3,8 +3,8 @@
     function LoginController ($scope, accountProvider) {
         $scope.DEFAULT_VIEW = 2;
 
-        $scope.show_login = false;
-        $scope.show_new_user = true;
+        $scope.show_login = true;
+        $scope.show_new_user = false;
         $scope.login_error = null;
 
         $scope.name = "";

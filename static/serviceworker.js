@@ -7,8 +7,13 @@ self.addEventListener("install", function(event) {
     }));
 });
 
+self.addEventListener('activate', function(e) {
+    console.log("[SW] activate");
+});
+
 self.addEventListener('fetch', function(event) {
     console.log("[SW] fetch");
+
     event.respondWith(
         caches.match(event.request)
             .then(function(response) {
@@ -16,14 +21,14 @@ self.addEventListener('fetch', function(event) {
                 // and update the cache for future usage
                 var fetchPromise = fetch(event.request).then(
                     function(networkResponse) {
-                        console.log(networkResponse);
+                        // console.log(networkResponse);
                         caches.open(event.request, networkResponse.clone());
                         return networkResponse;
                     });
                 // We use the currently cached vers ion if it's there
-                console.log(event.request.url)
-                console.log(response)
-                console.log(fetchPromise)
+                // console.log(event.request.url)
+                // console.log(response)
+                // console.log(fetchPromise)
                 return response || fetchPromise;
             })
     );

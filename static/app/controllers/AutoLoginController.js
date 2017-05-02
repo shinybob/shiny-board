@@ -3,7 +3,6 @@
     function AutoLoginController ($scope, accountProvider) {
 
         $scope.autoLogin = function () {
-            console.log("autoLogin")
             var user_data = {user_id: localStorage.getItem("user_id")};
             if(user_data.user_id !== null) {
                 accountProvider.get_user_data_from_id(user_data, function (error, user_data) {
