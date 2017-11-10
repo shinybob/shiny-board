@@ -202,7 +202,9 @@
         };
 
         $scope.launch = function (url) {
-            window.location = url;
+            var win = window.open(url, '_blank');
+            win.focus();
+            // window.location = url;
         };
 
         $scope.getStyle = function (isFav) {
