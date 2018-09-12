@@ -133,6 +133,7 @@ body {
 }
 
 .sb-medium-image-container {
+    float: left;
     border: solid red 1px;
 }
 
