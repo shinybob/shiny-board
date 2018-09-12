@@ -139,9 +139,9 @@ body {
 }
 
 .sb-cell-header-medium {
-    width: calc(100% - 75px);
-    font-size: 14px;
-    padding: 5px 0 0 5px;
+    width: calc(100% - 54px);
+    font-size: 16px;
+    padding: 4px 0 0 5px;
     overflow: hidden;
     white-space: nowrap;
     float: left;
