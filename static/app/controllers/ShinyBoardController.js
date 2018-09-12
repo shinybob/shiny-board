@@ -214,7 +214,7 @@
             if(isFav) {
                 return {
                     'border': '1px solid #ffec62',
-                    'background': 'linear-gradient(to bottom, #fbffb4 0%,#f9f9e8 100%)'};
+                    'background': 'linear-gradient(to bottom, #fcffcc 0%,#f9f9e8 100%)'};
             }
 
             return style;
