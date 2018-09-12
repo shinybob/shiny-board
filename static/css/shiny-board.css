@@ -132,6 +132,10 @@ body {
     white-space: nowrap;
 }
 
+.sb-medium-image-container {
+    border: solid red 1px;
+}
+
 .sb-cell-header-medium {
     width: calc(100% - 75px);
     font-size: 14px;
