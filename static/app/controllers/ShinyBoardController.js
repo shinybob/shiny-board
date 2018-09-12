@@ -213,7 +213,7 @@
 
             if(isFav) {
                 return {'border': '1px solid #ffec62',
-                    'backgroundColor': 'ffec62'};
+                    'backgroundColor': 'fbffb4'};
             }
 
             return style;
