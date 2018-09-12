@@ -212,7 +212,7 @@
             var style = {};
 
             if(isFav) {
-                return {'border-color': '#ffec62'};
+                return {'border': '2px solid #ffec62'};
             }
 
             return style;
