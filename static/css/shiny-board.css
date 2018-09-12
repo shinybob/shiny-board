@@ -133,18 +133,19 @@ body {
 }
 
 .sb-medium-image-container {
+    padding-top: 5px;
     float: left;
-    border: solid red 1px;
+    /*border: solid red 1px;*/
 }
 
 .sb-cell-header-medium {
     width: calc(100% - 75px);
     font-size: 14px;
-    padding: 0 0 0 5px;
+    padding: 5px 0 0 5px;
     overflow: hidden;
     white-space: nowrap;
     float: left;
-    border: solid red 1px;
+    /*border: solid red 1px;*/
 }
 
 .sb-cell-header-large {
