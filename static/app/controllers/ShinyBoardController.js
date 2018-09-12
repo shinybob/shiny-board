@@ -15,6 +15,7 @@
         $scope.cell_properties = ["fav", "image", "name", "url", "notes"];
 
         $scope.default_image = "../../images/no-icon.png";
+        $scope.default_image_medium = "../../images/blank.png";
         $scope.new_cell_data = null;
         $scope.new_user_data = null;
         $scope.new_image = null;
